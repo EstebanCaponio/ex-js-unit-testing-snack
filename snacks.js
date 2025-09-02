@@ -18,8 +18,14 @@ function average(arr) {
     return sum / arr.length;
 }
 
+// snack4
+function createSlug2(str) {
+    return str.replace(/\s/g, '-');
+}
 
 
 
 
-module.exports = { getInitials, createSlug, average };
+
+
+module.exports = { getInitials, createSlug, average, createSlug2 };
