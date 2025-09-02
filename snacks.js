@@ -37,27 +37,6 @@ function createSlug3(title) {
 }
 
 // snack7
-const posts = [
-    {
-        id: 1,
-        title: 'Dragonball Z',
-        slug: 'dragonball-z'
-    },
-    {
-        id: 2,
-        title: 'Demon Slayer',
-        slug: 'demon-slayer'
-    }, {
-        id: 3,
-        title: 'Death NOte',
-        slug: 'death-note'
-    }, {
-        id: 4,
-        title: 'Sakamoto Days',
-        slug: 'sakamoto-days'
-    }
-];
-
 function findPostById(arr, id) {
     if (isNaN(id)) {
         throw new Error('devi inserire un numero come secondo valore');
@@ -74,9 +53,18 @@ function findPostById(arr, id) {
     return arr.find(obj => obj.id === id);
 }
 
+// snack8 bonus
+function addPost(arr, obj) {
+    arr.push(obj)
+}
+
+function removePost(arr, id) {
+    const index = arr.findIndex(p => p.id === id);
+    arr.splice(index, 1);
+}
 
 
 
 
 
-module.exports = { getInitials, createSlug, average, createSlug2, isPalindrome, createSlug3, posts, findPostById };
+module.exports = { getInitials, createSlug, average, createSlug2, isPalindrome, createSlug3, findPostById, addPost, removePost };
