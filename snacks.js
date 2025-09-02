@@ -26,7 +26,14 @@ function createSlug2(str) {
 // snack5
 function isPalindrome(wrd) {
     const reverseWrd = wrd.split('').reverse().join('');
-    return reverseWrd.toLowerCase() === wrd.toLowerCase();
+    return reverseWrd.trim().toLowerCase() === wrd.trim().toLowerCase();
+}
+
+// snack6
+function createSlug3(title) {
+    if (!title) {
+        throw new Error('titolo non valido');
+    }
 }
 
 
@@ -34,4 +41,4 @@ function isPalindrome(wrd) {
 
 
 
-module.exports = { getInitials, createSlug, average, createSlug2, isPalindrome };
+module.exports = { getInitials, createSlug, average, createSlug2, isPalindrome, createSlug3 };

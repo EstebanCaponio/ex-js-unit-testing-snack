@@ -2,7 +2,8 @@ const { getInitials,
     createSlug,
     average,
     createSlug2,
-    isPalindrome
+    isPalindrome,
+    createSlug3
 } = require('./snacks')
 
 // snack1
@@ -31,6 +32,12 @@ test('La funzione createSlug sostituisce gli spazi con -.', () => {
 // snack5
 test('La funzione isPalindrome verifica se una stringa è un palindromo', () => {
     expect(isPalindrome('radar')).toBeTruthy();
-    expect(isPalindrome('Osso')).toBeTruthy();
-    expect(isPalindrome('kayak')).toBeTruthy();
+    expect(isPalindrome('Osso ')).toBeTruthy();
+    expect(isPalindrome('test')).toBeFalsy();
+});
+
+// snack6
+test('La funzione createSlug lancia un errore se il titolo è vuoto o non valido.', () => {
+    expect(() => createSlug3('')).toThrow('titolo non valido');
+    expect(() => createSlug3(null)).toThrow('titolo non valido');
 });
