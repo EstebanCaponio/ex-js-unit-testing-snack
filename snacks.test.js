@@ -3,7 +3,9 @@ const { getInitials,
     average,
     createSlug2,
     isPalindrome,
-    createSlug3
+    createSlug3,
+    posts,
+    findPostById
 } = require('./snacks')
 
 // snack1
@@ -40,4 +42,15 @@ test('La funzione isPalindrome verifica se una stringa è un palindromo', () => 
 test('La funzione createSlug lancia un errore se il titolo è vuoto o non valido.', () => {
     expect(() => createSlug3('')).toThrow('titolo non valido');
     expect(() => createSlug3(null)).toThrow('titolo non valido');
+});
+
+// snack7
+test('La funzione findPostById restituisce il post corretto dato l’array di post e l’id', () => {
+    expect(findPostById(posts, 1)).toEqual({
+        id: 1,
+        title: 'Dragonball Z',
+        slug: 'dragonball-z'
+    });
+    expect(() => findPostById(posts, 'ex')).toThrow('devi inserire un numero come secondo valore');
+    expect(() => findPostById([5, 7, 12], '4')).toThrow('devi inserire l\'array posts');
 });

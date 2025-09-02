@@ -36,9 +36,47 @@ function createSlug3(title) {
     }
 }
 
+// snack7
+const posts = [
+    {
+        id: 1,
+        title: 'Dragonball Z',
+        slug: 'dragonball-z'
+    },
+    {
+        id: 2,
+        title: 'Demon Slayer',
+        slug: 'demon-slayer'
+    }, {
+        id: 3,
+        title: 'Death NOte',
+        slug: 'death-note'
+    }, {
+        id: 4,
+        title: 'Sakamoto Days',
+        slug: 'sakamoto-days'
+    }
+];
+
+function findPostById(arr, id) {
+    if (isNaN(id)) {
+        throw new Error('devi inserire un numero come secondo valore');
+    }
+    arr.forEach(obj => {
+        if (
+            obj.id === undefined ||
+            obj.title === undefined ||
+            obj.slug === undefined
+        ) {
+            throw new Error('devi inserire l\'array posts');
+        }
+    })
+    return arr.find(obj => obj.id === id);
+}
 
 
 
 
 
-module.exports = { getInitials, createSlug, average, createSlug2, isPalindrome, createSlug3 };
+
+module.exports = { getInitials, createSlug, average, createSlug2, isPalindrome, createSlug3, posts, findPostById };
