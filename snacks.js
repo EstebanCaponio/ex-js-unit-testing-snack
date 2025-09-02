@@ -23,9 +23,15 @@ function createSlug2(str) {
     return str.replace(/\s/g, '-');
 }
 
+// snack5
+function isPalindrome(wrd) {
+    const reverseWrd = wrd.split('').reverse().join('');
+    return reverseWrd.toLowerCase() === wrd.toLowerCase();
+}
 
 
 
 
 
-module.exports = { getInitials, createSlug, average, createSlug2 };
+
+module.exports = { getInitials, createSlug, average, createSlug2, isPalindrome };
