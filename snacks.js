@@ -53,9 +53,18 @@ function findPostById(arr, id) {
     return arr.find(obj => obj.id === id);
 }
 
-// snack8 bonus
+// snack8/9 bonus
 function addPost(arr, obj) {
-    arr.push(obj)
+    const ids = arr.map(p => p.id);
+    if (ids.includes(obj.id)) {
+        throw new Error('id già esistente')
+    }
+
+    const slugs = arr.map(p => p.slug);
+    if (slugs.includes(obj.slug)) {
+        throw new Error('slug già esistente')
+    }
+    return arr.push(obj)
 }
 
 function removePost(arr, id) {

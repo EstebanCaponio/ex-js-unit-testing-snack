@@ -10,6 +10,7 @@ const { getInitials,
 } = require('./snacks')
 
 
+
 describe('manipolazione di stringhe', () => {
     // snack1
     test('La funzione getInitials restituisce le iniziali di un nome completo.', () => {
@@ -23,6 +24,8 @@ describe('manipolazione di stringhe', () => {
         expect(isPalindrome('test')).toBeFalsy();
     });
 })
+
+
 
 describe('manipolazione sugli array', () => {
     // snack3
@@ -56,6 +59,10 @@ describe('manipolazione sugli array', () => {
         ];
     });
 
+    afterEach(() => {
+        posts = [];
+    });
+
     // snack7
     test('La funzione findPostById restituisce il post corretto dato l’array di post e l’id', () => {
         expect(findPostById(posts, 1)).toEqual({
@@ -77,7 +84,15 @@ describe('manipolazione sugli array', () => {
         removePost(posts, 3)
         expect(posts).toHaveLength(3);
     });
+
+    // snack9 bonus
+    test('Se si tenta di aggiungere un post con un id o uno slug già esistente, la funzione addPost deve lanciare un errore.', () => {
+        expect(() => addPost(posts, { id: 3, title: 'One Piece', slug: 'one-piece' })).toThrow('id già esistente');
+        expect(() => addPost(posts, { id: 5, title: 'One Piece', slug: 'dragonball-z' })).toThrow('slug già esistente');
+    });
 })
+
+
 
 describe('generazione di slug', () => {
     // snack2
