@@ -72,8 +72,20 @@ function removePost(arr, id) {
     arr.splice(index, 1);
 }
 
+// snack10 bonus
+function createSlug4(slug, arr) {
+
+    const slugs = arr.map(p => p.slug);
+
+    if (slugs.includes(slug)) {
+        return slug + '-1';
+    }
+
+    return slug;
+}
 
 
 
 
-module.exports = { getInitials, createSlug, average, createSlug2, isPalindrome, createSlug3, findPostById, addPost, removePost };
+
+module.exports = { getInitials, createSlug, average, createSlug2, isPalindrome, createSlug3, findPostById, addPost, removePost, createSlug4 };

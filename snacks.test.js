@@ -6,8 +6,9 @@ const { getInitials,
     createSlug3,
     findPostById,
     addPost,
-    removePost
-} = require('./snacks')
+    removePost,
+    createSlug4
+} = require('./snacks');
 
 
 
@@ -23,7 +24,38 @@ describe('manipolazione di stringhe', () => {
         expect(isPalindrome('Osso ')).toBeTruthy();
         expect(isPalindrome('test')).toBeFalsy();
     });
-})
+});
+
+
+
+let posts;
+
+beforeEach(() => {
+    posts = [
+        {
+            id: 1,
+            title: 'Dragonball Z',
+            slug: 'dragonball-z'
+        },
+        {
+            id: 2,
+            title: 'Demon Slayer',
+            slug: 'demon-slayer'
+        }, {
+            id: 3,
+            title: 'Death NOte',
+            slug: 'death-note'
+        }, {
+            id: 4,
+            title: 'Sakamoto Days',
+            slug: 'sakamoto-days'
+        }
+    ];
+});
+
+afterEach(() => {
+    posts = [];
+});
 
 
 
@@ -32,35 +64,6 @@ describe('manipolazione sugli array', () => {
     test('La funzione average calcola la media aritmetica di un array di numeri.', () => {
         expect(average([1, 2, 3])).toBe(2);
         expect(average([5, 10, 15])).toBe(10);
-    });
-
-    let posts;
-
-    beforeEach(() => {
-        posts = [
-            {
-                id: 1,
-                title: 'Dragonball Z',
-                slug: 'dragonball-z'
-            },
-            {
-                id: 2,
-                title: 'Demon Slayer',
-                slug: 'demon-slayer'
-            }, {
-                id: 3,
-                title: 'Death NOte',
-                slug: 'death-note'
-            }, {
-                id: 4,
-                title: 'Sakamoto Days',
-                slug: 'sakamoto-days'
-            }
-        ];
-    });
-
-    afterEach(() => {
-        posts = [];
     });
 
     // snack7
@@ -90,7 +93,7 @@ describe('manipolazione sugli array', () => {
         expect(() => addPost(posts, { id: 3, title: 'One Piece', slug: 'one-piece' })).toThrow('id già esistente');
         expect(() => addPost(posts, { id: 5, title: 'One Piece', slug: 'dragonball-z' })).toThrow('slug già esistente');
     });
-})
+});
 
 
 
@@ -112,4 +115,9 @@ describe('generazione di slug', () => {
         expect(() => createSlug3('')).toThrow('titolo non valido');
         expect(() => createSlug3(null)).toThrow('titolo non valido');
     });
-})
+
+    // snack10 bonus
+    test('Se viene passato un array di post come secondo argomento, la funzione createSlug incrementa di 1 se lo slug esiste già.', () => {
+        expect(createSlug4('dragonball-z', posts)).toBe('dragonball-z-1');
+    });
+});
